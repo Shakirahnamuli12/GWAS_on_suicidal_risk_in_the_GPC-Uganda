@@ -1,0 +1,35 @@
+#!/bin/bash
+#SBATCH --job-name=fastGWA_GLMM           # Job name
+#SBATCH --nodes=1                         # Number of nodes (1 node)
+#SBATCH --ntasks=1                        # Number of tasks (usually 1 for a single job)
+#SBATCH --cpus-per-task=32                # Number of CPUs/cores per task (up to 32)
+#SBATCH --mem=128G                        # Memory per node (reduce from 256GB to 128GB)
+#SBATCH --time=30:00:00                   # Time limit (30 hours)
+#SBATCH --output=fastGWA_GLMM_%j.out      # Standard output and error log
+
+## Load necessary modules if applicable
+## module load gcta
+
+## Define variables
+`gcta="/mnt/users/s/sh/shakirah/FAST/gcta-1.94.1-linux-kernel-3-x86_64/gcta64"  # Path to GCTA executable`
+geno_path="/mnt/users/s/sh/shakirah/FAST/GPC_result.suicide"  # Prefix of the PLINK files (.bed, .bim, .fam)
+path_to_sparse_GRM="/mnt/users/s/sh/shakirah/FAST/GPC_sp_grm"  # Prefix of the sparse GRM files
+covar_file="/mnt/users/s/sh/shakirah/FAST/FAM/ordered.covs"  # Path to the quantitative covariate file
+pheno_file="/mnt/users/s/sh/shakirah/FAST/FAM/ordered.pheno.txt"  # Path to the phenotype file
+output_path="/mnt/users/s/sh/shakirah/FAST/RESULTS"  # Path to the output directory
+
+## Run GCTA fastGWA-GLMM
+${gcta} --bfile ${geno_path} \
+        --grm-sparse ${path_to_sparse_GRM} \
+        --fastGWA-mlm-binary \
+        --qcovar ${covar_file} \
+        --pheno ${pheno_file} \
+        --threads 32 \
+        --out ${output_path}/fastGWA_GLMM_final
+
+gcta: Path to the GCTA executable.
+geno_path: Path to the PLINK files.
+path_to_sparse_GRM: Path to the sparse GRM.
+covar_file: Path to the covariate file.
+pheno_file: Path to the phenotype file.
+output_path: Directory for the final output.
