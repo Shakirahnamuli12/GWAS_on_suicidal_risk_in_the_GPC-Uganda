@@ -1,3 +1,8 @@
+                    #GENETIC RISK FACTORS OF SUICIDAL RISK AMONG THE GENERAL POPULATION COHORT FROM SOUTHWESTERN UGANDA
+Contributors: Shakirah Namuli¹, Irene Namara¹², Lillian Linda¹, Herbert Agasi¹, Richard Mayanja¹², Christopher Kintu¹², Eugene Kinyanda², Segun Fatumo¹²³, Tinashe Chikowore¹⁴, Allan Kalungi¹²⁵
+Affiliations: ¹ The African Computational Genomics (TACG) Research Group,² MRC/UVRI & LSHTM Uganda Research Unit, ³ Precision Healthcare University Research Institute, Queen Mary University of London, ⁴ Harvard Medical School, ⁵ Department of Medical Biochemistry, Makerere University
+
+  We carried out a genome wide association study to identify geneti risk factors associated with suicidal risk with the general population cohort of SouthWestern Uganda using the FASTGWA-GLMM Workflow
 
 # FASTGWA-GLMM Workflow
 fastGWA-GLMM is a tool designed for ultra-fast generalized linear mixed model-based association analysis, specifically for binary traits.
