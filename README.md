@@ -3,21 +3,22 @@
 fastGWA-GLMM is a tool designed for ultra-fast generalized linear mixed model-based association analysis, specifically for binary traits.
 It uses a sparse Genetic Relationship Matrix (GRM) to conduct Genome-Wide Association Studies (GWAS) efficiently, accounting for population stratification. 
 This approach is particularly useful in large-scale biobank studies.
+NOTE : Before you run you GWAS script, you need to generate a Sparse GRM as shown below.
 
 
 ## Step 1: Obtain PLINK Files
 You need to generate .bim, .bed, and .fam files from your genotype data.
 
-###Code: ./plink --bfile UGR --keep output_suicide_ugrfam --make-bed --out GPC_result.suicide --noweb4
+Code: ./plink --bfile UGR --keep output_suicide_ugrfam --make-bed --out GPC_result.suicide --noweb4
 
 UGR: The prefix of your original PLINK files.
 output_suicide_ugrfam: The .fam file for your study.
 GPC_result.suicide: The output prefix for the new PLINK files.
 
 ## Step 2: Create a GRM
-Next, generate the Genetic Relationship Matrix (GRM) using GCTA.
+Next, generate the Genetic Relationship Matrix (GRM) using GCTA from the plink file.
 
-###Code:./gcta64 --bfile GPC_result.suicide --make-grm 0.05 --out suicide_data_grm
+Code: ./gcta64 --bfile GPC_result.suicide --make-grm 0.05 --out suicide_data_grm
 
 ###This creates the GRM using a cutoff of 0.05.
 
